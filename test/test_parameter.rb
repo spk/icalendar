@@ -26,6 +26,7 @@ class TestParameter < Test::Unit::TestCase
 
     tests.each do |params| 
       @event.summary("This is a test summary.", params)
+      @event.priority 2, params
       
       assert_equal params, @event.summary.ical_params
       
@@ -35,6 +36,7 @@ class TestParameter < Test::Unit::TestCase
       cals = Icalendar::Parser.new(cal_str).parse
       event = cals.first.events.first
       assert_equal params, event.summary.ical_params
+      assert_equal params, event.priority.ical_params
     end
   end
 end

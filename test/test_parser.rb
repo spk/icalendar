@@ -80,5 +80,8 @@ class TestIcalendarParser < Test::Unit::TestCase
     assert_equal(attachment, ats[0])
     attachment = URI.parse("http://corporations-dominate.existence.net/why.rhtml")
     assert_equal(attachment, ats[1])
+
+    assert_equal 2, event.priority
+    assert_equal 2, event.sequence
   end
 end
